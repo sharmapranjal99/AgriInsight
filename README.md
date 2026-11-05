@@ -1,129 +1,192 @@
-# AgriInsight: Seasonal Agriculture Performance Analysis
+# 🌾 AgriInsight — Seasonal Agriculture Performance Analysis
 
-Interactive website for the **VOIS AICTE Batch 1 (2026–2027) Major Project, "Seasonal Agriculture Performance Analysis"**.
+### VOIS AICTE Batch 1 (2026–2027) | Major Project
 
-The site presents the project's full analysis of **4,000 farm records** (28 variables, 8 states, 8 crops) across the three Indian cropping seasons, **Kharif, Rabi and Zaid**. It covers the problem statement and objectives, data cleaning, exploratory analysis, the seasonal, environmental, resource, economic and regional analyses, the hypothesis tests (Shapiro–Wilk, Levene, ANOVA, Kruskal–Wallis), findings, recommendations and conclusion.
+AgriInsight is an interactive web-based platform developed for the **Seasonal Agriculture Performance Analysis** major project. It presents a comprehensive analysis of agricultural performance across India's three major cropping seasons: **Kharif, Rabi, and Zaid**.
 
-All figures come from the project's own CSV and notebook. No placeholder or invented data is used.
+The platform transforms the project's Jupyter Notebook analysis into an interactive experience, making agricultural trends, statistical findings, resource utilization, environmental patterns, and economic performance easier to explore and understand.
 
 ---
 
-## 1. Technology stack
+## 🌐 Live Website
+
+**Explore AgriInsight — Now Live!**
+
+🔗 **[Visit AgriInsight](https://agri-insight-teal.vercel.app/)**
+
+<sub>Deployed and hosted on Vercel.</sub>
+
+---
+
+## 📊 Project at a Glance
+
+| Project Metric | Details |
+|---|---|
+| Farm Records | 4,000 |
+| Dataset Variables | 28 |
+| States | 8 |
+| Crops | 8 |
+| Districts | 10 |
+| Cropping Seasons | Kharif, Rabi, Zaid |
+| Platform | Interactive Web Application |
+| Deployment | Vercel |
+
+The website covers the complete analytical workflow, including data preprocessing, exploratory data analysis, seasonal comparisons, environmental analysis, resource utilization, economic analysis, regional patterns, statistical hypothesis testing, recommendations, and conclusions.
+
+**Data Integrity:** All analytical figures displayed on the website are derived from the project's source CSV dataset and Jupyter Notebook. No placeholder or invented analytical data is used.
+
+---
+
+## 1. Technology Stack
 
 | Layer | Technology |
 |---|---|
-| Framework | **React 18** + **TypeScript** |
-| Build tool / dev server | **Vite 5** |
-| Routing | React Router 6 (one URL per section, e.g. `/seasonal`, `/statistics`) |
-| Charts | Recharts, plus custom SVG boxplots and CSS-grid heatmaps |
-| Animation | Framer Motion (page transitions, scroll reveals) |
+| Frontend Framework | React 18 + TypeScript |
+| Build Tool & Development Server | Vite 5 |
+| Routing | React Router 6 |
+| Charts & Visualizations | Recharts, Custom SVG, CSS Grid Heatmaps |
+| Animations | Framer Motion |
 | Icons | lucide-react |
-| Styling | Plain CSS with design tokens (`website/src/styles/global.css`) |
-| Fonts | Fraunces + Inter (Google Fonts) |
-| Data pipeline | Python 3 with pandas, NumPy and SciPy (`website/scripts/build_data.py`) |
+| Styling | Custom CSS |
+| Typography | Fraunces + Inter |
+| Data Processing | Python 3, Pandas, NumPy, SciPy |
 
-**Requirements:** Node.js **18 or newer** (tested with Node v24.13.0, npm 11.6.2). Python is needed only if you want to regenerate the data file (see §8).
+**Requirements:** Node.js 18 or newer and npm. The project was tested with Node.js v24.13.0 and npm 11.6.2.
+
+Python is required only when regenerating the analytical data file.
 
 ---
 
-## 2. Start the website locally (quick start)
+## 2. Run the Website Locally
 
-Open **PowerShell** or **Command Prompt** and run:
+Follow these steps to run AgriInsight on your computer.
+
+### Step 1: Open the Project Folder
+
+Open PowerShell or Command Prompt and navigate to the website directory:
 
 ```powershell
 cd "C:\Users\hp\OneDrive\Desktop\AgriInsight\website"
+```
+
+### Step 2: Install Dependencies
+
+Run this command if you are setting up the project for the first time or if `node_modules` is missing:
+
+```powershell
+npm install
+```
+
+### Step 3: Start the Development Server
+
+```powershell
 npm run dev
 ```
 
-The browser opens automatically. If it doesn't, open:
+### Step 4: Open the Website
 
-### ➜ http://localhost:5173
+Open the following URL in your browser:
 
-> The first time on a new machine, or if the `node_modules` folder is missing, run `npm install` before `npm run dev` (see §7).
+**http://localhost:5173**
+
+Vite automatically opens the browser in most configurations. If it does not, open the URL manually.
 
 ---
 
-## 3. All commands (run inside the `website` folder)
+## 3. Available Development Commands
+
+Run all commands from inside the `website` directory.
+
+| Command | Description |
+|---|---|
+| `npm install` | Installs all project dependencies |
+| `npm run dev` | Starts the local development server |
+| `npm run build` | Type-checks and creates the production build |
+| `npm run preview` | Previews the production build locally |
+| `npm run data` | Regenerates the analytical JSON data file using Python |
+
+**Local URLs:**
+
+| Service | URL |
+|---|---|
+| Development Server | http://localhost:5173 |
+| Production Preview | http://localhost:4173 |
+
+The project commands have been tested, including dependency installation, production build, data regeneration, and local development.
+
+---
+
+## 4. Website Pages & Navigation
+
+AgriInsight contains 14 analytical and informational sections.
+
+| Section | Local URL |
+|---|---|
+| Home | `/` |
+| Problem Statement | `/problem` |
+| Objectives | `/objectives` |
+| Project Overview | `/overview` |
+| Methodology | `/methodology` |
+| Dataset & Preprocessing | `/dataset` |
+| Exploratory Data Analysis | `/eda` |
+| Seasonal Performance Analysis | `/seasonal` |
+| Environmental Analysis | `/environment` |
+| Resource Utilization | `/resources` |
+| Economic & Regional Analysis | `/economics` |
+| Statistical Findings | `/statistics` |
+| Recommendations | `/recommendations` |
+| Conclusion | `/conclusion` |
+
+For local testing, append any route to `http://localhost:5173`.
+
+---
+
+## 5. Stop the Development Server
+
+To stop the local development server:
+
+1. Open the terminal where `npm run dev` is running.
+2. Press `Ctrl + C`.
+3. If prompted with `Terminate batch job (Y/N)?`, type `Y` and press Enter.
+
+Closing the terminal also stops the server.
+
+If the terminal is unavailable and the server is still running, use:
 
 ```powershell
-cd "C:\Users\hp\OneDrive\Desktop\AgriInsight\website"
+netstat -ano | findstr :5173
 ```
 
-| Command | What it does | URL |
-|---|---|---|
-| `npm install` | Installs dependencies into `node_modules` (one-time) | n/a |
-| `npm run dev` | Starts the development server with live reload | http://localhost:5173 |
-| `npm run build` | Type-checks and builds the production site into `dist/` | n/a |
-| `npm run preview` | Serves the built `dist/` folder (run `npm run build` first) | http://localhost:4173 |
-| `npm run data` | Regenerates `public/data/insights.json` from the CSV (needs Python) | n/a |
-
-All of these were tested on this project. A fresh copy of the project went through `npm install`, `npm run build`, `npm run data` (its output was byte-identical to the shipped file) and `npm run dev`, all successfully.
-
----
-
-## 4. Localhost URLs
-
-| Page | URL |
-|---|---|
-| Home | http://localhost:5173/ |
-| Problem Statement | http://localhost:5173/problem |
-| Objectives | http://localhost:5173/objectives |
-| Project Overview | http://localhost:5173/overview |
-| Methodology | http://localhost:5173/methodology |
-| Dataset & Preprocessing | http://localhost:5173/dataset |
-| Exploratory Data Analysis | http://localhost:5173/eda |
-| Seasonal Performance Analysis | http://localhost:5173/seasonal |
-| Environmental Analysis | http://localhost:5173/environment |
-| Resource Utilization | http://localhost:5173/resources |
-| Economic & Regional Analysis | http://localhost:5173/economics |
-| Statistical Findings | http://localhost:5173/statistics |
-| Recommendations | http://localhost:5173/recommendations |
-| Conclusion | http://localhost:5173/conclusion |
-
-> If port 5173 is already in use, Vite automatically picks the next free port (5174, 5175, …). Always use the `Local:` URL that the terminal prints, for example:
-> ```
->   VITE v5.4.11  ready in 442 ms
->   ➜  Local:   http://localhost:5173/
-> ```
-
----
-
-## 5. Stop the development server
-
-**Normal way:** click the terminal window where `npm run dev` is running and press **`Ctrl + C`**. If you're asked `Terminate batch job (Y/N)?`, type **`Y`** and press Enter.
-
-Closing that terminal window also stops the server.
-
-**If you lost the terminal window** and the server is still running in the background:
+Identify the process ID (PID), then run:
 
 ```powershell
-# 1. Find the process ID (last column) of whatever is using port 5173
-netstat -ano | findstr :5173
-
-# 2. Stop it, replacing 12345 with the PID shown above
 taskkill /PID 12345 /F
 ```
 
-(Tested: `taskkill` stopped the server and the page stopped loading.)
+Replace `12345` with the actual PID.
 
 ---
 
-## 6. Restart after shutting down or restarting your laptop
+## 6. Restart the Website
 
-The server does not survive a shutdown. Start it again with the same two commands:
+After shutting down or restarting your computer, run:
 
 ```powershell
 cd "C:\Users\hp\OneDrive\Desktop\AgriInsight\website"
 npm run dev
 ```
 
-Then open http://localhost:5173. You don't need to reinstall anything as long as the `node_modules` folder still exists.
+Then open:
+
+http://localhost:5173
+
+There is no need to reinstall dependencies if the `node_modules` folder is still available.
 
 ---
 
-## 7. Reinstall dependencies (if `node_modules` is missing or broken)
+## 7. Reinstall Dependencies
 
-`node_modules` isn't part of the source code. It may be missing on a new computer, after copying the project, after a OneDrive sync, or if you deleted it. Reinstall with:
+If `node_modules` is missing or corrupted, reinstall the dependencies.
 
 ```powershell
 cd "C:\Users\hp\OneDrive\Desktop\AgriInsight\website"
@@ -131,7 +194,7 @@ npm install
 npm run dev
 ```
 
-For a completely clean reinstall (if you see strange errors):
+For a clean reinstall:
 
 ```powershell
 cd "C:\Users\hp\OneDrive\Desktop\AgriInsight\website"
@@ -139,104 +202,206 @@ Remove-Item -Recurse -Force node_modules
 npm install
 ```
 
-`package-lock.json` pins exact versions, so `npm install` reproduces the same tested set of packages. `npm audit` may report warnings in development-only packages. These do not affect running the site locally, and you don't need to run `npm audit fix --force` (it can upgrade packages to incompatible major versions).
+The `package-lock.json` file maintains the project's dependency versions.
+
+Avoid using `npm audit fix --force` without reviewing the changes, as it may introduce incompatible major dependency upgrades.
 
 ---
 
-## 8. Environment variables and additional setup
+## 8. Environment Variables & Data Configuration
 
-**No environment variables, API keys, `.env` file or database are required.** The website is fully static and reads its data from `website/public/data/insights.json`.
+No environment variables, API keys, `.env` files, or database connections are required.
 
-**Optional: regenerating the data file.** Do this only if the CSV changes or you change the analysis in `scripts/build_data.py`:
+The website is a static frontend application that loads its analytical data from:
+
+```text
+website/public/data/insights.json
+```
+
+### Regenerating the Analytical Data
+
+If the source CSV or data-processing script changes, regenerate the JSON file using:
 
 ```powershell
 cd "C:\Users\hp\OneDrive\Desktop\AgriInsight\website"
-pip install pandas numpy scipy      # only if not already installed (Anaconda already includes them)
+
+pip install pandas numpy scipy
+
 npm run data
 ```
 
-The script reads `..\seasonal_agriculture_performance_dataset.csv` and reproduces the notebook's cleaning (season-median imputation for rainfall and soil moisture, crop-median imputation for yield) and statistical tests. It then writes `public/data/insights.json`. Tested with Python 3.13.9, pandas 2.3.3 and SciPy 1.16.3.
+The script reads the root-level dataset:
 
-**Internet:** the site loads its two fonts from Google Fonts. Offline, it still works but falls back to system fonts.
+```text
+seasonal_agriculture_performance_dataset.csv
+```
+
+It reproduces the project's data-cleaning and statistical-processing steps and generates:
+
+```text
+public/data/insights.json
+```
+
+The generated file supplies the numerical data displayed throughout the website.
+
+### Internet Requirement
+
+The website loads Fraunces and Inter fonts from Google Fonts. When offline, the application falls back to system fonts.
 
 ### Troubleshooting
 
-| Problem | Fix |
+| Problem | Solution |
 |---|---|
-| `'npm' is not recognized` | Install Node.js LTS from https://nodejs.org, then open a **new** terminal. |
-| PowerShell says `running scripts is disabled on this system` | Use **Command Prompt** instead, or run `npm.cmd run dev`, or run once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. |
-| `Cannot find module …` / `vite is not recognized` | `node_modules` is missing. Run `npm install` (§7). |
-| Page shows **"Something went wrong – Could not load the analysis data"** | `public/data/insights.json` is missing. Run `npm run data`, or restore the file. |
-| Site opens on 5174 instead of 5173 | Port 5173 was busy. Use the printed URL, or stop the old server (§5). |
-| Opening `index.html` by double-clicking shows a blank page | The site must be served by `npm run dev` or `npm run preview`. It can't be opened as a file. |
+| `npm` is not recognized | Install Node.js LTS and reopen the terminal |
+| PowerShell blocks npm scripts | Use Command Prompt or `npm.cmd run dev` |
+| Vite is not recognized | Run `npm install` |
+| Analysis data cannot load | Check `public/data/insights.json` |
+| Website opens on port 5174 | Port 5173 may already be occupied; use the URL printed by Vite |
+| Opening `index.html` directly shows a blank page | Start the website using `npm run dev` or `npm run preview` |
 
 ---
 
-## 9. Project folder structure
+## 9. Project Folder Structure
 
-```
+```text
 AgriInsight/
-├── README.md                                                  ← this file
-├── Major Project_Seasonal Agriculture Performance Analysis.pdf ← official brief (source, read-only)
-├── Seasonal_Agriculture_Performance_Analysis.ipynb            ← analysis notebook (source, read-only)
-├── seasonal_agriculture_performance_dataset.csv               ← dataset (source, read-only)
-└── website/                                                   ← the frontend project
-    ├── package.json              scripts and dependency list
-    ├── package-lock.json         exact pinned dependency versions
-    ├── vite.config.ts            dev server config (port 5173, auto-open browser)
-    ├── tsconfig.json             TypeScript config
-    ├── index.html                HTML entry point (fonts, favicon, meta)
-    ├── README.md                 short developer notes
+│
+├── README.md
+├── DATA_PROVENANCE.md
+├── PROJECT_PROGRESS.md
+├── complete_workflow.png
+│
+├── Major Project_Seasonal Agriculture Performance Analysis.pdf
+├── Seasonal_Agriculture_Performance_Analysis.ipynb
+├── seasonal_agriculture_performance_dataset.csv
+│
+└── website/
+    │
+    ├── package.json
+    ├── package-lock.json
+    ├── index.html
+    ├── vite.config.ts
+    ├── tsconfig.json
+    ├── vercel.json
+    │
     ├── scripts/
-    │   └── build_data.py         CSV → insights.json (reproduces notebook cleaning + tests)
+    │   └── build_data.py
+    │
     ├── public/
     │   ├── favicon.svg
-    │   └── data/insights.json    all numbers shown on the site (generated)
-    ├── src/
-    │   ├── main.tsx              app bootstrap (router + data provider)
-    │   ├── App.tsx               routes, page transitions, loading/error boundaries
-    │   ├── styles/global.css     design system: colours, typography, layout, components
     │   ├── data/
-    │   │   ├── DataContext.tsx   loads insights.json, exposes loading/error/ready state
-    │   │   └── types.ts          TypeScript types for the data file
-    │   ├── lib/
-    │   │   ├── sections.ts       the 14 sections: titles, URLs, groups, icons (drives all navigation)
-    │   │   └── format.ts         number/₹/p-value formatting, season colours
-    │   ├── components/
-    │   │   ├── Header.tsx        top navigation, dropdowns, mobile drawer
-    │   │   ├── Footer.tsx
-    │   │   ├── PageShell.tsx     shared section layout: hero, side rail, prev/next pager
-    │   │   ├── ui.tsx            ChartCard, Kpi, Triad, Note, Seg (toggle), Tip (tooltip), Reveal
-    │   │   ├── Heatmap.tsx       sequential / diverging heatmap
-    │   │   ├── BoxPlot.tsx       SVG boxplot (seaborn-style whiskers)
-    │   │   ├── Illustrations.tsx hero landscape + section header artwork
-    │   │   ├── Brand.tsx         logo
-    │   │   └── States.tsx        loader, error screen, error boundary, data gate
-    │   └── pages/                one file per section
-    │       ├── Home.tsx  Problem.tsx  Objectives.tsx  Overview.tsx  Methodology.tsx
-    │       ├── Dataset.tsx  EDA.tsx  Seasonal.tsx  Environment.tsx  Resources.tsx
-    │       ├── Economics.tsx  Statistics.tsx  Recommendations.tsx  Conclusion.tsx
-    │       └── NotFound.tsx
-    ├── node_modules/             installed packages (generated by npm install, not source)
-    └── dist/                     production build (generated by npm run build)
+    │   │   └── insights.json
+    │   └── upload/
+    │
+    └── src/
+        │
+        ├── App.tsx
+        ├── main.tsx
+        │
+        ├── styles/
+        │   └── global.css
+        │
+        ├── data/
+        │   ├── DataContext.tsx
+        │   └── types.ts
+        │
+        ├── lib/
+        │   ├── sections.ts
+        │   └── format.ts
+        │
+        ├── components/
+        │   ├── Header.tsx
+        │   ├── Footer.tsx
+        │   ├── PageShell.tsx
+        │   ├── Brand.tsx
+        │   ├── ui.tsx
+        │   ├── Heatmap.tsx
+        │   ├── BoxPlot.tsx
+        │   ├── Illustrations.tsx
+        │   └── Notebook-based chart components
+        │
+        └── pages/
+            ├── Home.tsx
+            ├── Problem.tsx
+            ├── Objectives.tsx
+            ├── Overview.tsx
+            ├── Methodology.tsx
+            ├── Dataset.tsx
+            ├── EDA.tsx
+            ├── Seasonal.tsx
+            ├── Environment.tsx
+            ├── Resources.tsx
+            ├── Economics.tsx
+            ├── Statistics.tsx
+            ├── Recommendations.tsx
+            ├── Conclusion.tsx
+            └── NotFound.tsx
 ```
 
 ---
 
-## 10. Notes for future development
+## 10. Important Development Guidelines
 
-- **Never hard-code statistics in pages.** Every number on the site is read from `insights.json`. To show a new figure, compute it in `scripts/build_data.py`, add its type in `src/data/types.ts`, run `npm run data`, then use it via `useData()` in the page.
-- **Keep the source files untouched.** The PDF, notebook and CSV in the project root are only read, never modified.
-- **Adding or renaming a section:** add an entry to `SECTIONS` in `src/lib/sections.ts` (this updates the header, mobile menu, side rail, footer and prev/next links automatically), create the page in `src/pages/`, and register its route in `src/App.tsx`.
-- **Provenance badges:** charts use `<Source kind="nb" />` when they reproduce a notebook analysis and `<Source kind="data" />` when they are extra views computed from the same cleaned data. Keep this distinction for any new chart.
-- **Notebook text vs. data:** four statements in the notebook's written text disagree with its computed outputs. The website shows the computed values and flags each one (see *Statistical Findings → Verification summary*):
-  1. Finding 3 says Rabi's median profit is positive. It is actually −₹3,187.
-  2. §7 calls rainfall and soil moisture the strongest yield correlates, based on correlations with **raw** yield. Against raw yield the ranking does not hold: all environmental |r| < 0.03, and soil moisture is only 4th of the 5 positive correlations (6th of 7 by strength). Against **crop-adjusted** yield it does hold (rainfall r = +0.215, soil moisture r = +0.179), although these associations mostly reflect differences between seasons. The website shows both.
-  3. §6 and Recommendation 3 say the best season varies by crop. Kharif is best for every crop, on both yield and profit.
-  4. Every one of the 10 districts appears under all 8 states, so regional analysis is done at state level only.
+To maintain consistency and reliability while extending the project, follow these guidelines:
 
-  Consider correcting these in the notebook before the final submission.
-- **Design system:** colours, radii and shadows are CSS variables at the top of `global.css`. Season colours are Kharif `#1f8a5b`, Rabi `#3b6ea5` and Zaid `#d08a2e`, defined in `src/lib/format.ts`.
-- **Run `npm run build` before demoing or submitting.** It type-checks the whole project and fails on errors, which catches mistakes the dev server may not show.
-- **Deployment:** `npm run build` produces a static `dist/` folder that can be hosted on Netlify, Vercel, GitHub Pages and similar. Because the site uses clean URLs (`/seasonal`), configure the host to fall back to `index.html` for unknown paths, which is standard "SPA" mode.
-- **Accessibility and motion:** animations respect the operating system's "reduce motion" setting. Heatmap cells are keyboard-focusable and show their value in the readout below the chart.
+- **Data Accuracy:** Do not hard-code analytical statistics directly into individual pages. Figures should be generated through `scripts/build_data.py` and loaded from `insights.json`.
+- **Source Files:** The root-level PDF, notebook, and CSV are the project's source documents and dataset. Keep them unchanged unless an update is explicitly required.
+- **Navigation:** The website's section configuration is maintained in `src/lib/sections.ts`. New sections should also be registered in `src/App.tsx`.
+- **Data Provenance:** Maintain the distinction between charts reproduced from notebook analysis and additional views computed from the same cleaned dataset.
+- **Build Verification:** Run `npm run build` before deployment or project submission to identify TypeScript and production-build errors.
+- **Responsive Design:** Test new pages and visualizations on desktop, tablet, and mobile screen sizes.
+- **Deployment:** The production build generates a static `dist/` directory. The application uses clean URLs, so hosting platforms must support SPA fallback to `index.html`.
+
+### Statistical Verification Notes
+
+Four statements in the notebook's written text disagree with its computed outputs. The website documents these differences in the Statistical Findings section:
+
+1. Finding 3 states that Rabi's median profit is positive. The computed value is −₹3,187.
+2. The notebook describes rainfall and soil moisture as the strongest raw-yield correlations. The raw-yield correlation ranking does not support that statement; the website also displays crop-adjusted correlations.
+3. Sections 6 and Recommendation 3 state that the best season varies by crop. The computed results show Kharif as the best season for every crop, for both yield and profit.
+4. Every one of the 10 districts appears under all 8 states, so regional analysis is presented at state level only.
+
+These differences are documented for transparency and should be reviewed against the source notebook before final academic submission.
+
+---
+
+## 11. Deployment
+
+AgriInsight is deployed on **Vercel**.
+
+**Live Website:** [https://agri-insight-teal.vercel.app/](https://agri-insight-teal.vercel.app/)
+
+The production website is built using:
+
+```powershell
+npm run build
+```
+
+The generated `dist/` directory contains the production-ready static files.
+
+For deployment, configure the hosting platform to use the `website` directory as the project root and enable SPA fallback for client-side routes.
+
+---
+
+## 👨‍💻 Project Information
+
+**Project:** Seasonal Agriculture Performance Analysis  
+**Platform:** AgriInsight  
+**Programme:** VOIS AICTE Batch 1 (2026–2027)  
+**Institution:** KIET Group of Institutions  
+
+### ⭐ Project Highlights
+
+- Interactive agricultural analytics website
+- Analysis of 4,000 farm-level records
+- Seasonal comparisons across Kharif, Rabi, and Zaid
+- Environmental and resource utilization analysis
+- Economic and regional performance analysis
+- Statistical hypothesis testing
+- Notebook-based data provenance
+- Responsive web interface
+- Live deployment on Vercel
+
+---
+
+**AgriInsight — Turning Agricultural Data into Meaningful Insights.**
