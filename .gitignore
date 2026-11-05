@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+website/node_modules/
+
+# Build output
+dist/
+website/dist/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
